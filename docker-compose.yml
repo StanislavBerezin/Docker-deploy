@@ -1,0 +1,24 @@
+version: '3'
+services:
+  # this is the container
+  web:
+  # configurations for the container
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      #dont check references for node_modules
+      - /app/node_modules
+      # from the current (local directory) to /app inside of container
+      - .:/app
+  # that is another contaner
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
