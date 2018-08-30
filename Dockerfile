@@ -16,6 +16,8 @@ RUN npm run build
 
 # Another phase
 FROM nginx:stable-alpine
+# exposing
+EXPOSE 80
 # copy something from builder phase assigned above
 COPY --from=builder /app/build /usr/share/nginx/html
 

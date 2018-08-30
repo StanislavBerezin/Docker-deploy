@@ -16,3 +16,18 @@ script:
 # it will run the tests in our container. -- --coverage is used to show
 # the coverage and exit the tests right after the boot.
   - docker run stasberezin/docker-react npm run test -- --coverage
+
+# deploy:
+#   provide: ec2
+#   region: "us-west-2"
+#   app:docker
+#   env: "Docker-env"
+#   bucket_name: instance name like us-west-2-19292994993
+#   bucket_path: docker
+#   <!-- get code only from master -->
+#   on:
+#     branch:master
+#     <!-- variables that are declared in travis interface -->
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_acess_key:
+#     secure: "$AWS_SECRET_KEY
