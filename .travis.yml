@@ -1,0 +1,18 @@
+sudo: required
+
+# it tells travis that we need a docker container running
+services:
+  - docker:
+
+# to do something before
+# we need to build the docker image before we run tests
+before_install: 
+# same as the comand in terminal
+# with this tag
+  - docker build -t stasberezin/docker-react -f Dockerfile.dev .
+
+# scripts to run
+script: 
+# it will run the tests in our container. -- --coverage is used to show
+# the coverage and exit the tests right after the boot.
+  - docker run stasberezin/docker-react npm run test -- --coverage
